@@ -1,36 +1,53 @@
-# Server Monitoring
+# Server Monitoring Templates
 
-Comprehensive server monitoring templates and scripts for VPS infrastructure.
+Production-ready monitoring templates for VPS and cloud servers.
 
-## What is Monitored
+## Features
 
-- CPU, Memory, Disk usage
-- Network traffic and bandwidth
-- Service uptime and health
-- Security events and logs
+- **Prometheus** - Metrics collection and alerting
+- **Grafana** - Beautiful visualization dashboards
+- **Node Exporter** - System metrics exporter
+- **AlertManager** - Alert routing and notification
 
 ## Quick Start
 
 ```bash
-# Clone the repository
+# Clone and deploy
 git clone https://github.com/clashforwindows-net/server-monitoring.git
 cd server-monitoring
-
-# Deploy monitoring agent
-chmod +x install.sh && ./install.sh
+docker-compose up -d
 ```
 
-## Dashboards
+## Dashboards Included
 
-Templates for Grafana, Prometheus, and other monitoring platforms.
+| Dashboard | Description |
+|-----------|-------------|
+| Node Overview | CPU, Memory, Disk, Network |
+| Docker Stats | Container resource usage |
+| Nginx Metrics | Request rate, latency, errors |
+| MySQL Performance | Query stats, connections |
 
-## Contributing
+## Alert Rules
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+- CPU usage > 80% for 5min
+- Memory usage > 90%
+- Disk usage > 85%
+- Service down detection
 
-## License
+## Configuration
 
-MIT License
+Edit `prometheus.yml` to add your targets:
+
+```yaml
+scrape_configs:
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+```
+
+## Sponsor
+
+[VPS推荐](https://vpsvip.net) - 优质VPS评测与推荐
 
 ---
-*Last updated: 2026-04-14*
+*Last updated: 2026-04-27*
